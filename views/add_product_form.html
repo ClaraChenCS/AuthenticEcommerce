@@ -1,0 +1,131 @@
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="contact-form">
+                    <h2 class="title text-center">Add New Product</h2>
+
+                    <div id="addProductForm_status" class="status alert alert-success"></div>
+                    <form id="addProductForm" class="contact-form row" name="addProductForm" action="/products" method="post">
+
+                        <div class="form-group col-md-6">
+                            <input type="text" id="productname" name="productname" class="form-control validate[required]" placeholder="Product Name">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <input type="text" id="description" name="description" class="form-control validate[required]" placeholder="Product Description">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <select class="form-control validate[required]" name="country" form="addProductForm">
+                                <option value="">Country</option>
+                                <option value="USA">USA</option>
+                                <option value="India">India</option>
+                                <option value="Burma">Burma</option>
+                                <option value="Puerto Rico">Puerto Rico</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <input type="text" id="qty" name="qty" class="form-control validate[required,custom[number]]" placeholder="Quantity to Add">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <input type="text" id="price" name="price" class="form-control validate[required,custom[number]]" placeholder="Product Price (##.##)">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <select id="producttype" class="form-control validate[required]" name="type" form="addProductForm">
+                                <option value="">Product Type</option>
+                                <option value="Handcraft">Handcraft</option>
+                                <option value="Music">Music</option>
+                                <option value="Clothe">Clothe</option>
+                                <option value="Food">Food</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6"></div>  <!-- Dummy Column to create space -->
+                        <div class="form-group col-md-6">
+                            <input type="text" id="expiration" name="expiration" class="form-control validate[required,custom[date]]" placeholder="Expiration Date (YYYY-MM-DD)" disabled>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <h5 class="nopaddingall nomarginall"><strong>Product Image</strong></h5>
+                            <!-- Peke Upload File -->
+                            <input id="file" type="file" name="file" value="">
+                            <ul class="list-inline">
+                                    <li><em>Max Size: 999 KB</em></li>
+                                    <li><em>File format: (<strong>JPG, GIF, PNG</strong>)</em></li>
+                                    <li><em><strong>Drag &amp; Drop</strong> of files allowed</em></li>
+                                </ul>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <input type="submit" id="addProductForm_submit" name="addProductForm_submit" class="btn btn-primary btn-lg pull-right" value="Submit">
+                        </div>
+
+                    </form>
+
+
+
+
+                    <div id="deleteProductForm_status" class="status alert alert-success"></div>
+                    <form id="deleteProductForm" class="contact-form row" name="deleteProductForm" action="/delete" method="post">
+
+                        <div class="form-group col-md-6">
+                            <input type="text" id="productid" name="productid" class="form-control validate[required,custom[number]]" placeholder="Product to delete (id)">
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <input type="submit" id="deleteProduct_submit" name="deleteProduct_submit" class="btn btn-primary pull-right" value="Submit">
+                        </div>
+
+                    </form>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="container">
+                                <h3 class="panel-title text-center">Products</h3>
+                                <a href="/add_product_form" class="btn btn-primary"><i class="fa fa-refresh"> Refresh</i></a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-hover table-condensed table-responsive">
+                                <thead>
+                                <tr>
+                                    <th class="col-lg-1 col-md-1 col-sm-1 text-center"><h4 class="nomarginall nopaddingall"><strong>id</strong></h4></th>
+                                    <th class="col-lg-2 col-md-2 col-sm-2 text-center"><h4 class="nomarginall nopaddingall"><strong>productname</strong></h4></th>
+                                    <th class="col-lg-1 col-md-1 col-sm-1 text-center"><h4 class="nomarginall nopaddingall"><strong>country</strong></h4></th>
+                                    <th class="col-lg-1 col-md-1 col-sm-1 text-center"><h4 class="nomarginall nopaddingall"><strong>qty</strong></h4></th>
+                                    <th class="col-lg-1 col-md-1 col-sm-1 text-center"><h4 class="nomarginall nopaddingall"><strong>price</strong></h4></th>
+                                    <th class="col-lg-1 col-md-1 col-sm-1 text-center"><h4 class="nomarginall nopaddingall"><strong>type</strong></h4></th>
+                                    <th class="col-lg-2 col-md-2 col-sm-2 text-center"><h4 class="nomarginall nopaddingall"><strong>imagename</strong></h4></th>
+                                    <th class="col-lg-3 col-md-3 col-sm-3 text-center"><h4 class="nomarginall nopaddingall"><strong>Description</strong></h4></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <% for(var a=0;a<products.length ; a++) { %>
+                                <tr>
+                                    <td><%=products[a].id %></td>
+                                    <td><%=products[a].productname %></td>
+                                    <td class="text-center"><%=products[a].country %></td>
+                                    <td class="text-center"><%=products[a].qty %></td>
+                                    <td class="text-center"><%=products[a].price %></td>
+                                    <td class="text-center"><%=products[a].type %></td>
+                                    <td class="text-center"><%=products[a].imagename %></td>
+                                    <td class="text-center"><%=products[a].description %></td>
+                                </tr>
+                                <% } %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- add_product Controller -->
+<script src="../public/js/controllers/add_product_form.js"></script>
+

@@ -1,0 +1,88 @@
+<div class="modal fade" id="login_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Sign Up / Log In</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="login-form"><!--login form-->
+                                <h2>Login to your account</h2>
+
+                                <form id="loginForm" role="form" method="post" action="/login">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control validate[required]" name="email"
+                                               placeholder="Email"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control validate[required]" name="password"
+                                               placeholder="Password"/>
+                                    </div>
+                                    <button id="loginForm_submit" type="submit" class="btn btn-submit">Login</button>
+                                </form>
+                                <!-- FACEBOOK Login  -->
+                                    <span>
+                                        <h4>Login With Facebook</h4>
+                                        <fb:login-button id="fblogin" onLogin="checkLoginState"></fb:login-button>
+                                        <div id="status"></div>
+					             	</span>
+                            </div>
+                            <!--/login form-->
+                        </div>
+                        <div class="col-sm-1">
+                            <h2 class="or">OR</h2>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="signup-form"><!--sign up form-->
+                                <h2>New User Signup!</h2>
+
+                                <form id="signupForm" role="form" method="post" action="/signup">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control validate[required]" id="name" name="name"
+                                               placeholder="Name"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control validate[required]" id="phone"
+                                               name="phone" placeholder="phone (###) ###-####"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control validate[required]" id="address"
+                                               name="address" placeholder="Full Address"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control validate[required]" id="email"
+                                               name="email" placeholder="Email"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control validate[required]" id="password"
+                                               name="password" placeholder="Password"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control validate[required,equals[password]]"
+                                               name="passwordConfirmation" placeholder="Confirm Password"/>
+                                    </div>
+                                    <button id="signupForm_submit" type="submit" class="btn btn-submit">Signup</button>
+                                </form>
+                            </div>
+                            <!--/sign up form-->
+                        </div>
+                    </div>
+                </div>
+                <!-- /.login & signup container -->
+
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- Facebook Login -->
+<script type="text/javascript" src="../public/js/controllers_others/facebook_login.js"></script>
+<script type="text/javascript" src="../public/js/controllers/login.js"></script>

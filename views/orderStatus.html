@@ -1,0 +1,193 @@
+
+<!-- created by Khine Oo(Clara Chen) 11/10/15 -->
+<!-- Order Status Page
+     ** the data will be retrieved from the tables of database- order, orderproduct and shipment **
+     This page will display the user the summary and status of each orders
+     each page will show up to 5 orders from the past and present-->
+
+<section>
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="/">Shop</a></li>
+                <li class="active">Order Status</li>
+            </ol>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2> Order Status</h2>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="col-md-6">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for orders">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                        </span>
+                </div>
+            </div><!-- End Search Bar-->
+
+        </div>
+        <div class="row">
+            <div class="col-md-3"><a href="#">Orders</a></div>
+            <hr width="95%" size="25" color="#000000">
+        </div>
+
+
+        <% if(orderPlaced==1) { %>  <!-- condition if there is data in order model -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">Total <%= order.length %> Orders placed </div>
+                   <!-- <div class="btn-group">
+                        <button type="button" class="btn btn-orderhistory dropdown-toggle usa" data-toggle="dropdown">
+                            past 6 months &lt;!&ndash; need to move to the left &ndash;&gt;
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">2015</a></li>
+                            <li><a href="#">2014</a></li>
+                            <li><a href="#">2013</a></li>
+                            <li><a href="#">2012</a></li>
+                            <li><a href="#">2011</a></li>
+                            <li><a href="#">2010</a></li>
+                        </ul>
+                    </div>-->
+                </div>
+            </div>
+                <% for(var i=0; i< order.length; i++) { %>
+                    <div class="container">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="col-md-3">
+                                    <span>
+                                        <h6>ORDER PLACED</h6> </h6>
+                                        <h6><%=order[i].date %></h6>
+                                    </span>
+                                </div>
+                                <div class="col-md-3">
+                                    <h6>TOTAL</h6>
+                                    <h6><%=order[i].totalprice %></h6>
+                                </div>
+                                <div class="col-md-3">
+
+
+
+                                    <!-- show shipping address and user name -->
+
+
+                                        <h6 class="dropdown">SHIP TO<i class="fa fa-angle-down"></i></h6>
+                                            <ul>
+                                                <li><% user.name %></li>
+                                                <li><% user.address %></li>
+                                            </ul>
+
+
+
+<!--
+
+                                    <h6>SHIP TO<i class="fa fa-angle-down"></i></h6>
+                                    <h6><i class="fa fa-angle-down"></i></h6> name should get from shipping table-->
+                                </div>
+                                <div class="col-md-3">
+                                    <h6>ORDER# <%=order[i].id %></h6>
+                                    <h6><a href="#">Order Details</a>   |  <a href="#"> Invoice</a> </h6>
+                                </div>
+                                <br><br>
+                                <hr>
+                                <% for(var op =0; op< orderProducts.length; op++) { %>
+                                    <% if(order[i].id == orderProducts[op].orderID) { %>
+                                        <% for(var j=0; j< products.length; j++) { %>
+                                            <% if(products[j].id == orderProducts[op].productID) { %>
+                                                <div class="col-md-9">
+                                                    <h6>Shipping Status: Preparing for Shipment</h6>
+                                                    <h6>Shipping/Delivary Estimate: Shipping estimate: Friday December 17, 2015)</h6>
+                                                    <img class="img-thumbnail largethumb-y img-responsive" src="https://s3-us-west-2.amazonaws.com/ieshopper/uploads/<%=products[j].imagename %>"/>
+                                                    <h6><%=products[j].productname %></h6>
+                                                    <h6>$<%=products[j].price %></h6>
+                                                </div>
+                                                <div class="col-md-3">
+
+                                                    <a id="buyagain" class="btn btn-default get" href="/details/<%=products[j].id %>">Buy again</a><br>
+                                                    <a class="btn btn-default get" href="/contact">Contact Seller</a><br>
+                                                    <button type="button" class="btn btn-default get">Track package</button><br>
+                                                    <button type="button" class="btn btn-default get">Cancel items</button><br>
+                                                    <button type="button" class="btn btn-default get">View or edit order</button>
+                                                </div>
+                                            <% } %> <!-- /if(product.id== orderProduct.productID) -->
+                                        <% } %> <!-- /for(product.length -->
+                                    <% } %> <!-- /if(order.id==orderproduct.orderID) -->
+
+                                <% } %> <!-- /end of one row of two dimensional array -->
+
+
+
+                            </div>
+                        </div>
+
+                    </div> <!-- 1st order details end -->
+
+                <% } %> <!-- /end of for loop -->
+        <% } else { %>  <!-- /end of if -->
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-3">
+                        <h4> No order placed</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- 1st order details end -->
+        <% } %> <!-- /end of else -->
+<!-- 4 more order history items to add on each page-->
+        <!--
+        <div class="container">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="col-md-3">
+                        <span>
+                            <h6>ORDER PLACED</h6> </h6>
+                            <h6>November 12, 2015</h6>
+                        </span>
+                    </div>
+                    <div class="col-md-3">
+                        <h6>TOTAL</h6>
+                        <h6>$8.50</h6>
+                    </div>
+                    <div class="col-md-3">
+                        <h6>SHIP TO</h6>
+                        <h6>Clara Chen<i class="fa fa-angle-down"></i></h6>
+                    </div>
+                    <div class="col-md-3">
+                        <h6>ORDER# 123456789-1234</h6>
+                        <h6>Order Details   |   Invoice </h6>
+                    </div>
+                    <br><br>
+                    <hr>
+                    <div class="col-md-9">
+                        <h6>Shipping Status(eg. Preparing for Shipment)</h6>
+                        <h6>Shipping/Delivary Estimate (eg. Shipping estimate: Friday Nov 13, 2015</h6>
+                        <img src="/public/home/gallery2.jpg">
+                        <h6>"Product Name/info"</h6>
+                        <h6>"Product Price</h6>
+                    </div>
+                    <div class="col-md-3">
+                        <button>Buy again</button><br>
+                        <button>Track package</button><br>
+                        <button>Contact Seller</button><br>
+                        <button>Cancel items</button><br>
+                        <button>View or edit order</button>
+                    </div>
+
+                </div>
+            </div>
+        </div><!-- / second order details end -->
+
+    </div>
+</section>
+
+<!-- details Controller for Buy again button -->
+<script src="../public/js/controllers/details.js"></script>

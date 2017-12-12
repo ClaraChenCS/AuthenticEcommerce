@@ -1,0 +1,136 @@
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Category</h2>
+                    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="#usa_category">
+                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                        USA
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="usa_category" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul>
+                                        <%var country='USA' %>
+                                        <li><a href="/clothe/<%=country%>">Clothes </a></li>
+                                        <li><a href="/handcraft/<%=country%>">Handcrafts </a></li>
+                                        <li><a href="/music/<%=country %>">Music </a></li>
+                                        <li><a href="/food/<%=country %>">Food</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="#india_category">
+                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                        India
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="india_category" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul>
+                                        <%var country='India' %>
+                                        <li><a href="/clothe/<%=country%>">Clothes </a></li>
+                                        <li><a href="/handcraft/<%=country%>">Handcrafts </a></li>
+                                        <li><a href="/music/<%=country %>">Music </a></li>
+                                        <li><a href="/food/<%=country %>">Food</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="#burma_category">
+                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                        Burma
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="burma_category" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul>
+                                        <%var country='Burma' %>
+                                        <li><a href="/clothe/<%=country%>">Clothes </a></li>
+                                        <li><a href="/handcraft/<%=country%>">Handcrafts </a></li>
+                                        <li><a href="/music/<%=country %>">Music </a></li>
+                                        <li><a href="/food/<%=country %>">Food</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordian" href="#puertorico_category">
+                                        <span class="badge pull-right"><i class="fa fa-plus"></i></span>
+                                        Puerto Rico
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="puertorico_category" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul>
+                                        <% var country='Puerto Rico' %>
+                                        <li><a href="/clothe/<%=country%>">Clothes </a></li>
+                                        <li><a href="/handcraft/<%=country%>">Handcrafts </a></li>
+                                        <li><a href="/music/<%=country %>">Music </a></li>
+                                        <li><a href="/food/<%=country %>">Food</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--/category-products-->
+
+                    <div class="shipping text-center"><!--shipping-->
+                        <img src="../public/images/home/shipping.jpg" alt="" />
+                    </div><!--/shipping-->
+
+                </div>
+            </div>
+
+            <div class="col-sm-9 padding-right">
+                <div class="features_items"><!--features_items-->
+                    <h2 class="title text-center">Myanmar Features Items</h2>
+
+                    <% for(var a=0; a< products.length;a++) { %>
+
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img class="img-thumbnail largethumb-y img-responsive" src="https://s3-us-west-2.amazonaws.com/ieshopper/uploads/<%=products[a].imagename %>"/>
+                                    <h2>$<%=products[a].price %></h2>
+                                    <p><%=products[a].productname %></p>
+                                    <a href="/details/<%=products[a].id %>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>View Details</a>
+                                </div>
+                            </div>
+                            <div class="choose">
+                                <ul class="nav nav-pills nav-justified">
+                                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to Cart</a></li>
+                                    <li><a href="/details/<%=products[a].id %>"><i class="fa fa-search"></i>View Details</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+
+
+                </div><!--features_items-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--clothe controller -->
+<script src="../public/js/controllers/clothe.js"></script>

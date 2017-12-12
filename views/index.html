@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>International eShopper</title>
+    <!-- CSS Files Loading **START** -->
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../public/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../public/css/prettyPhoto.css" rel="stylesheet">
+    <link href="../public/css/price-range.css" rel="stylesheet">
+    <link href="../public/css/animate.css" rel="stylesheet">
+	<link href="../public/css/main.css" rel="stylesheet">
+	<link href="../public/css/responsive.css" rel="stylesheet">
+    <!-- VALIDATION ENGINE CSS -->
+    <link href="../public/css/validationEngine.jquery.css" rel="stylesheet">
+    <!-- CSS Files Loading **END** -->
+    <!--[if lt IE 9]>
+    <script src="../public/js/controllers_others/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="../public/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+</head><!--/head-->
+
+<body>
+	<header id="header"><!--header-->
+
+		<div class="header-middle"><!--header-middle-->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="logo pull-left">
+							<a href="/shop_usa"><img src="../public/images/home/ieShopper_185x80.png" alt="" /></a>
+
+						</div>
+					</div><!-- /row ie shopper end -->
+
+
+					<div class="col-sm-6 pull-left">
+						<!-- Search Bar -->
+
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                            </span>
+						</div><!-- /Search Bar -->
+					</div>
+
+						<div class="col-sm-3">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+							</div>
+
+							<div class="mainmenu pull-right">
+								<ul class="nav navbar-nav collapse navbar-collapse">
+                                    <% if (name == "Guest") { %>
+                                    <li><a href="/login"><i class="fa fa-user"> Login</i></a></li>
+									<!--<li><a href="/updateuserinfo">Settings</a></li>-->
+                                    <% } else { %>
+                                    <li class="dropdown"><a href="/login"><i class="fa fa-user"> Welcome <%= name %> </i><i class="fa fa-angle-down"></i></a>
+                                        <ul role="menu" class="sub-menu">
+                                            <!--<li><a href="/account">Account</a></li>-->
+                                            <li><a href="/logout">Logout</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <% } %>
+								</ul>
+							</div>
+						</div>
+					<div class="col-sm-12"></div>
+					<div class="col-sm-3">
+						<div class="btn-group pull-right">
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+									USA
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">India</a></li>
+									<li><a href="#">Myanmar</a></li>
+									<li><a href="#">Puerto Rico</a></li>
+								</ul>
+							</div>
+
+							<div class="btn-group">
+								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+									USA Dollar
+									<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a href="#">Indian Rupee</a></li>
+									<li><a href="#">Myanmar Kyat</a></li>
+								</ul>
+							</div>
+
+
+						</div>
+					</div>
+
+					<div class="col-sm-7 pull-right">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+
+						</div>
+
+						<div class="mainmenu pull-right">
+							<ul class="nav navbar-nav collapse navbar-collapse">
+								<li class="dropdown"><a href="/initialProducts"><i class="fa fa-globe"> Shop</i><i class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="/shop_usa" id="USA">USA</a></li>
+										<li><a href="/shop_india">India</a></li>
+										<li><a href="/shop_burma">Myanmar</a></li>
+										<li><a href="/shop_puertorico">Puerto Rico</a></li>
+									</ul>
+								</li>
+
+                                <% if (name != "Guest") { %>
+								<li class="dropdown"><a href="#"><i class="fa fa-user">Your Account</i><i class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+                                        <li><a href="/accountsetting">Account Setting</a></li>
+										<li><a href="/orderStatus">Orders</a></li>
+										<li role="separator" class="divider"></li>
+
+									</ul>
+								</li>
+								<li class="dropdown"><a href="/cart"><i class="fa fa-shopping-cart"> Cart <span id="cartBadge" class="badge"></span></i><i class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="/cart">Checkout</a></li>
+									</ul>
+								</li>
+                                <% } %>
+
+								<li class="dropdown"><a href="#"><i class="fa fa-star">Help</i><i class="fa fa-angle-down"></i></a>
+									<ul role="menu" class="sub-menu">
+										<li><a href="/contact">Contact Us</a></li>
+										<li><a href="/aboutus">About Us</a></li>
+									    <!--<li><a href="#">FAQ</a></li>-->
+										<li><a href="/contact">Help</a></li>
+									</ul>
+                                </li>
+
+							</ul>
+						</div>
+					</div>
+
+				</div>
+
+
+
+				</div>
+			</div>
+		</div><!--/header-middle-->
+	</header><!--/header - Logo, Menu and Currency Change; Fixed, never change-->
+	
+	<section id="slider"><!--slider-->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+							<li data-target="#slider-carousel" data-slide-to="1"></li>
+							<li data-target="#slider-carousel" data-slide-to="2"></li>
+                            <li data-target="#slider-carousel" data-slide-to="3"></li>
+						</ol>
+						
+						<div class="carousel-inner">
+							<div class="item active">
+								<div class="col-sm-6">
+									<h1><span>IE</span>-SHOPPER</h1>
+									<h2>USA</h2>
+									<p>Browse and Shop our excellent collection of traditional United States Products. </p>
+								</div>
+								<div class="col-sm-6">
+									<img src="../public/images/home/USAFlag.png" class="girl img-responsive" alt="" />
+								</div>
+							</div>
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>IE</span>-SHOPPER</h1>
+									<h2>INDIA</h2>
+									<p>IE-Shopper provides the best traditional Indian clothes at the best prices.</p>
+								</div>
+								<div class="col-sm-6">
+									<img src="../public/images/home/IndiaFlag.png" class="girl img-responsive" alt="" />
+								</div>
+							</div>
+							
+							<div class="item">
+								<div class="col-sm-6">
+									<h1><span>IE</span>-SHOPPER</h1>
+									<h2>MYANMAR</h2>
+									<p>Unique collection of Myanmar products that can only be found here!</p>
+								</div>
+								<div class="col-sm-6">
+									<img src="../public/images/home/Myanmar.png" class="girl img-responsive" alt="" />
+								</div>
+							</div>
+
+                            <div class="item">
+                                <div class="col-sm-6">
+                                    <h1><span>IE</span>-SHOPPER</h1>
+                                    <h2>PUERTO RICO</h2>
+                                    <p>Shop Big products from the Small Puerto Rico Island!</p>
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="../public/images/home/PuertoricoFlag.png" class="girl img-responsive" alt="" />
+                                </div>
+                            </div>
+							
+						</div>
+						
+						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+							<i class="fa fa-angle-left"></i>
+						</a>
+						<a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+							<i class="fa fa-angle-right"></i>
+						</a>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</section><!--/slider - Carousel Shown on initial load of Home Page-->
+
+	<section id="content"><!--content -->
+
+        <!--inject content data from server.  The logic to inject the data in the page is executed
+        from the file /public/js/controllers/MainController.js-->
+
+        <!-- Inject Modal Login Code -->
+        <div id="loginModal"></div>
+
+        <!-- Inject Content Code -->
+        <div id="contentData"></div>
+
+	</section><!--/content - Variable content of the main page-->
+	
+	<footer id="footer"><!--Footer-->
+		<div class="footer-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="companyinfo">
+							<h2><span>ei</span>Shopper</h2>
+							<p>Shop From Home while away</p>
+						</div>
+					</div>
+					<div class="col-sm-7">
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="../public/images/home/iframe1.png" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="../public/images/home/iframe2.png" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="../public/images/home/iframe3.png" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+						
+						<div class="col-sm-3">
+							<div class="video-gallery text-center">
+								<a href="#">
+									<div class="iframe-img">
+										<img src="../public/images/home/iframe4.png" alt="" />
+									</div>
+									<div class="overlay-icon">
+										<i class="fa fa-play-circle-o"></i>
+									</div>
+								</a>
+								<p>Circle of Hands</p>
+								<h2>24 DEC 2014</h2>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3">
+						<div class="address">
+							<img src="../public/images/home/map.png" alt="" />
+							<p>Santa Clara, CA(Silicon Valley)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer-widget">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Service</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Order Status</a></li>
+								<li><a href="#">FAQ’s</a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>Policies</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="/terms_and_condition">Terms of Use</a></li>
+								<li><a href="/privacypolicy">Privacy Policy</a></li>
+								<li><a href="/return_and_refund">Refund Policy</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-sm-2">
+						<div class="single-widget">
+							<h2>About Shopper</h2>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a href="/aboutus">Company Information</a></li>
+                                <li><a href="#">Billing System</a></li>
+                                <li><a href="/copyright">Copyright</a></li>
+							</ul>
+						</div>
+					</div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Admin</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="/add_product_form">Add/Delete Product</a></li>
+                                <li><a href="#">Add Manufacture</a></li>
+                                <li><a href="#">Delete Product</a></li>
+                            </ul>
+                        </div>
+                    </div>
+					<div class="col-sm-3 col-sm-offset-1">
+						<div class="single-widget">
+							<h2>About Shopper</h2>
+							<form action="#" class="searchform">
+								<input type="text" placeholder="Your email address" />
+								<button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+								<p>Get the most recent updates from <br />our site and be updated your self...</p>
+							</form>
+						</div>
+					</div>
+                    <div class="col-sm-12">
+                        <div class="single-widget-bottom">
+                            <h2>Quick Shop</h2>
+                            <ul class="nav navbar-nav collapse navbar-collapse">
+                                <li><a href="/shop_usa">USA</a></li>
+                                <li><a href="/shop_india">India</a></li>
+                                <li><a href="/shop_burma">Burma</a></li>
+                                <li><a href="/shop_puertorico">Puerto Rico</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+				</div>
+			</div>
+		</div>
+		
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="row">
+					<p class="pull-left">Copyright © 2015 I-eShopper Inc. All rights reserved.</p>
+					<p class="pull-right">Designed by <span><a target="_blank" href="http://www.themeum.com">Tech-Team</a></span></p>
+				</div>
+			</div>
+		</div>
+		
+	</footer><!--/footer - Fixed, Never change-->
+    <!--Javascript Files loading  **START** -->
+    <script src="../public/js/controllers_others/jquery-2.1.4.min.js"></script>
+    <script src="../public/js/controllers_others/bootstrap.min.js"></script>
+	<script src="../public/js/controllers_others/jquery.scrollUp.min.js"></script>
+    <script src="../public/js/controllers_others/jquery.prettyPhoto.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&sensor=true"></script>
+    <script src="../public/js/controllers_others/gmaps.js"></script>
+    <script src="../public/js/controllers_others/contact.js"></script>
+    <!-- FORM VALIDATION ENGINE -->
+    <script type="text/javascript" src="../public/js/controllers_others/jquery.validationEngine.js"></script>
+    <script type="text/javascript" src="../public/js/controllers_others/jquery.validationEngine-en.js"></script>
+    <!-- File Upload -->
+    <script type="text/javascript" src="../public/js/controllers_others/pekeUpload.js"></script>
+    <!-- STRIPE CHECKOUT -->
+    <script src="https://checkout.stripe.com/v2/checkout.js"></script>
+    <!-- MainController -->
+    <script type="text/javascript" src="../public/js/controllers/MainController.js"></script>
+    <!--Javascript Files loading  **END** -->
+
+</body>
+</html>

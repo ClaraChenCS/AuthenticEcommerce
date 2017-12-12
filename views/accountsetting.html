@@ -1,0 +1,125 @@
+<html>
+<body>
+<!--
+<script type="text/javascript">
+    function editname(btneditnamevalue)
+    {
+        switch(btneditnamevalue)
+        {
+            case btneditname:
+                $("#diveditemail").addClass("hidden");
+                $("#diveditmobile").addClass("hidden");
+                $("#diveditpassword").addClass("hidden");
+
+                $("#diveditsetting").removeClass("hidden");
+                $("#diveditname").removeClass("hidden");
+                break;
+            case btneditemail:
+                $("#diveditname").addClass("hidden");
+                $("#diveditmobile").addClass("hidden");
+                $("#diveditpassword").addClass("hidden");
+
+                $("#diveditsetting").removeClass("hidden");
+                $("#diveditemail").removeClass("hidden");
+                break;
+            case btneditmobile:
+                $("#diveditname").addClass("hidden");
+                $("#diveditemail").addClass("hidden");
+                $("#diveditpassword").addClass("hidden");
+
+                $("#diveditmobile").removeClass("hidden");
+                $("#diveditsetting").removeClass("hidden");
+
+                break;
+            case btneditpassword:
+                $("#diveditname").addClass("hidden");
+                $("#diveditmobile").addClass("hidden");
+                $("#diveditemail").addClass("hidden");
+
+                $("#diveditpassword").removeClass("hidden");
+                $("#diveditsetting").removeClass("hidden");
+
+                break;
+        }
+
+
+
+    }
+
+</script>
+    <script type="text/javascript" src="js/accountsetting.js"></script>
+
+-->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+
+            <div class="step-one">
+                <h2 class="heading">My Information</h2>
+
+                <div>
+                    <h3>Name </h3>
+                    <div id="custname"><%=userInfo.name %></div>
+
+                    <h3>EmailID</h3>
+                    <div id="custemailid"><%=userInfo.email %></div>
+
+                    <h3>Address</h3>
+                    <div id="custaddress"><%=userInfo.address %></div>
+
+                    <h3>Mobile Number</h3>
+                    <div id="custmobile"><%=userInfo.phone %> </div>
+
+                    <h3>Password</h3>
+                    <div id="custpassword">********</div>
+                    <button id="btneditpassword" type="submit" class="btn btn-success largemarginbottom largemargintop">Edit My Info</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-1">
+
+        </div>
+
+        <div id="diveditsetting" class="col-sm-4">
+            <form id="updateuserForm" role="form" method="post" action="/updateuserinfo">
+
+            <div class="step-one">
+                <h2 class="heading">Update My Information</h2>
+            </div>
+            <form>
+                <div class="form-group">
+                   <label for="name">Name</label>
+                   <input type="text" class="form-control" id="name" name="name" placeholder=" Enter new Name" value="<%=userInfo.name %>">
+                 </div>
+                <div class="form-group">
+                   <label for="email">EmailId</label>
+                   <input type="email" class="form-control" id="email" name="email" placeholder=" Enter new Email" value="<%=userInfo.email %>">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder=" Enter new Address" value="<%=userInfo.address %>">
+                </div>
+                <div class="form-group">
+                   <label for="phone">Mobile Number</label>
+                    <input type="text" class="form-control" id="phone" name="phone" placeholder=" Enter new Mobile number" value="<%=userInfo.phone %>">
+                </div>
+                <div class="form-group">
+                   <label for="password">Password</label>
+                   <input type="password" class="form-control" id="password" name="password" placeholder="Enter new Password" value="<%=userInfo.password %>">
+                    <input type="password" class="form-control" id="confirmpassword" placeholder="Re-Enter Password">
+            </div>
+
+
+
+            <button id="updateuserinfo" type="submit" class="btn btn-success largemarginbottom largemargintop">Save Changes</button>
+        </form>
+     </div>
+    </div>
+
+</div>
+
+<!-- add_product Controller -->
+<script src="../public/js/controllers/update_userinfo.js"></script>

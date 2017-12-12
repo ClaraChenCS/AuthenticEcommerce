@@ -1,0 +1,34 @@
+{
+  "name": "iesaas-s",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "^1.5.0",
+    "aws-sdk": "^2.2.19",
+    "body-parser": "~1.13.2",
+    "connect-busboy": "0.0.2",
+    "cookie-parser": "^1.4.0",
+    "ejs": "~2.3.4",
+    "express": "~4.13.1",
+    "express-session": "^1.12.1",
+    "foreman": "^1.4.1",
+    "open-exchange-rates": "^0.3.0",
+    "passport": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "pg": "^4.4.3",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.13.0",
+    "serve-static": "~1.10.0",
+    "stripe": "^4.0.0",
+    "underscore": "~1.8.3"
+  },
+  "devDependencies": {
+    "karma": "~0.13.10",
+    "jasmine-core": "~2.3.4",
+    "karma-jasmine": "~0.3.6",
+    "karma-chrome-launcher": "~0.2.1"
+  }
+}

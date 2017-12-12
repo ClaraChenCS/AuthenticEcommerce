@@ -1,0 +1,70 @@
+Hello, this are the basic instructions to download, run and push code to this project repository:
+
+Download or Clone Project:
+
+-Open a terminal window and cd to the desired directory where you want this repository
+-From the directory write in the command line:
+
+    git clone git@github.com:sjsu-cmpe272/ecommerce.git
+
+Installing NODEJS:
+-On Mac:
+
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew install node
+
+-On Windows:
+    - Donwload the Windows installer from the NodeJS website: https://nodejs.org/en/#download
+
+Installing Project Dependencies:
+
+-Change directory to the project directory and install dependencies:
+    cd ecommerce
+    npm install
+    npm install -g foreman
+
+-Creating Environmental Variables file:
+    touch .env
+
+-Creating a PostgreSQL credential file:
+    touch .pgpass
+    nano .pgpass
+
+ add the following line (substitute the VALUES in UPPERCASE for your Values):
+    localhost:5432:DBNAME:USERNAME:PASSWORD
+
+-Execute pgsetup.sh file to setup the PostgreSQL server and start it in the background:
+    sudo chmod +x /setup/pgsetup.sh
+    ./setup/pgsetup.sh
+
+-Creating New Branches to Develop and Test(Staging) before Pushing to Github
+    git checkout -b develop
+    git checkout -b staging
+
+Making changes to files of the project:
+- Working on the 'develop' branch
+    git checkout develop
+    git touch newFile.txt
+    git add newFile.txt
+
+ test your work and if everything is ok:
+    git commit -a -m "Enter here your comments explaining the changes"
+
+- When you have code that is ready to test on test server (Heroku) push to 'staging'
+    git checkout staging
+    git merge develop
+    git push staging-heroku staging:master
+
+ Open the heroku site at:  https://iesaas-s.herokuapp.com
+ If everything is OK you can push to staging (Github)
+
+    git push origin staging
+ If someone pushed to staging before you; you need to fetch, commit and then push:
+    git pull origin staging
+    git commit -a -m "Had to Pull before Push"
+    git push origin staging
+
+ go back to the 'develop' branch to keep working on new features:
+    git checkout develop
+
+

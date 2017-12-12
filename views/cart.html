@@ -1,0 +1,188 @@
+<section id="cart_items">
+    <div class="container">
+        <div class="left-sidebar">
+            <h2>Shopping Cart</h2>
+
+            <!-- Alert to User: Product Added to Shopping Cart -->
+            <div id="productRemovedFromShoppingCartAlert" class="alert alert-success alert-dismissible fade in text-center" role="alert">
+                <button id="closeProductRemovedFromShoppingCartAlert"type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <strong>Product Removed from Shopping Cart</strong>
+            </div>
+
+        </div>
+        <!--/breadcrums-->
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                <tr class="cart_menu">
+                    <td class="image">Item</td>
+                    <td class="description"></td>
+                    <td class="price">Price</td>
+                    <td class="quantity">Quantity</td>
+                    <td class="total">Total</td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                <% var subTotal = parseFloat(0);
+                for(var a=0; a < products.length ; a++) { %>
+                <tr id="<%=products[a].id %>">
+                    <td class="cart_product">
+                        <img class="img-thumbnail thumb img-responsive" src="https://s3-us-west-2.amazonaws.com/ieshopper/uploads/<%=products[a].imagename %>" alt="">
+                    </td>
+                    <td class="cart_description">
+                        <h4><a href=""><%=products[a].productname %></a></h4>
+
+                        <p>Web ID: <%=products[a].id %></p>
+                    </td>
+                    <td class="cart_price">
+                        <p>$<%=products[a].price %></p>
+                    </td>
+                    <td class="cart_quantity">
+                        <p><%=orderProducts[a].qty %></p>
+                    </td>
+                    <td class="cart_total">
+                        <p class="cart_total_price">$<%=orderProducts[a].priceTotal %></p>
+                    </td>
+                    <td class="cart_delete">
+                        <a class="cart_quantity_delete" href="/delete/orderproduct/<%=orderProducts[a].id %>"><i class="fa fa-times"></i></a>
+                    </td>
+                </tr>
+                <% subTotal = (parseFloat(subTotal) + parseFloat(orderProducts[a].priceTotal)).toFixed(2);
+                    } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+
+<section id="do_action">
+    <div class="container">
+        <div class="heading">
+            <h3>What would you like to do next?</h3>
+
+            <p>Choose if you have a discount code or reward points you want to use or would like to estimate your
+                delivery cost.</p>
+        </div>
+        <div class="row">
+            <form id="checkoutForm" class="form-horizontal" role="form" method="post" action="/checkout/<%=orderProducts[0].orderID %>">
+
+                <div class="col-sm-6">
+                    <div class="chose_area2">
+
+                        <ul class="user_info nomargintop">
+                            <li class="single_field">
+                                <label><strong>Shipping Information</strong></label>
+                            </li>
+                        </ul>
+
+                        <div class="form-group smallmarginbottom">
+                            <label for="address1" class="col-sm-3 control-label">Address</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control validate[required]" id="address1" name="address1"
+                                       placeholder="Address Line #1">
+                            </div>
+                        </div>
+                        <div class="form-group smallmarginbottom">
+                            <label for="address2" class="col-sm-3 control-label">Address</label>
+
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="address2" name="address2"
+                                       placeholder="Address Line #2">
+                            </div>
+                        </div>
+
+                        <div class="form-group smallmarginbottom">
+                            <label for="city" class="col-sm-3 control-label">City / State</label>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control validate[required]" id="city" name="city"
+                                       placeholder="City/Town/Locality">
+                            </div>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control validate[required]" id="state" name="state"
+                                       placeholder="State / Province">
+                            </div>
+                        </div>
+
+                        <div class="form-group smallmarginbottom">
+                            <label for="zip" class="col-sm-3 control-label">Zip Code / Country</label>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control validate[required,custom[integer]]" id="zip" name="zip" placeholder="Postal Code">
+                            </div>
+
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control validate[required]" id="country" name="country" placeholder="Country">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="total_area">
+                        <div class="row">
+                            <ul>
+                                <li>Cart Sub Total <span>$<%=subTotal %></span></li>
+                                <% var tax = parseFloat(.08625*subTotal).toFixed(2); %>
+                                <% var shipping = 10.99; %>
+                                <% var orderTotal = (parseFloat(subTotal)+parseFloat(tax)+parseFloat(shipping)).toFixed(2) %>
+                                <li>Tax (Santa Clara, CA: 8.625%) <span>$<%=tax %></span></li>
+                                <li>Shipping Cost <span>$<%=shipping %></span></li>
+                                <li id="totalOrder">Total <span>$<%=orderTotal %></span></li>
+                            </ul>
+                        </div>
+                        <div class="row">
+                                <div id="loadingMessage" style="display:none" class="text-center"><h4 class="refresh nopaddingall nomarginall"><i class='fa fa-refresh fa-spin'></i></h4></div>
+
+                            <div class="col-sm-5 col-sm-offset-1">
+                                <a href="http://www.stripe.com/about" target="_blank"><img class="img-responsive" src="public/images/cart/stripe-payments_bkg.png"></a>
+                            </div>
+                            <div class="col-sm-3 col-sm-offset-3">
+                                <input type="hidden" id="orderTotal" name="orderTotal" value="<%=orderTotal %>">
+                                <input
+                                        id="checkoutForm_submit"
+                                        type="submit" class="btn btn-default check_out"
+                                        name="submitPaid"
+                                        value="Checkout"
+                                        data-key="pk_test_gRnRKCGSMGhjwB73TL20idbN"
+                                        data-currency="usd"
+                                        data-name="IE-Shopper.com"
+                                        data-description="New Order Payment"
+                                        data-panel-Label="Pay"
+                                        /> <i id="submitPaySpinner" class="hidden icon-refresh icon-spin icon-large"></i>
+                            </div>
+
+
+
+                            <!-- submitPay -->
+                            <div id="submitPayGroup" class="">
+                                <div class="form-group">
+                                    <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-3" for="checkoutForm_submit"></label>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-9">
+                                        <h3 class="nomargintop">
+                                            </h3>
+                                        <br>
+                                        <div class="image-center">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section><!--/#do_action-->
+
+<!-- details Controller -->
+<script src="../public/js/controllers/cart.js"></script>

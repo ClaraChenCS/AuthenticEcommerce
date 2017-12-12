@@ -1,0 +1,232 @@
+
+<script type="text/javascript">
+    function editname(btneditnamevalue)
+    {
+        switch(btneditnamevalue)
+        {
+            case btneditname:
+                $("#diveditemail").addClass("hidden");
+                $("#diveditmobile").addClass("hidden");
+                $("#diveditpassword").addClass("hidden");
+
+                $("#diveditsetting").removeClass("hidden");
+                $("#diveditname").removeClass("hidden");
+                break;
+            case btneditemail:
+                $("#diveditname").addClass("hidden");
+                $("#diveditmobile").addClass("hidden");
+                $("#diveditpassword").addClass("hidden");
+
+                $("#diveditsetting").removeClass("hidden");
+                $("#diveditemail").removeClass("hidden");
+                break;
+            case btneditmobile:
+                $("#diveditname").addClass("hidden");
+                $("#diveditemail").addClass("hidden");
+                $("#diveditpassword").addClass("hidden");
+
+                $("#diveditmobile").removeClass("hidden");
+                $("#diveditsetting").removeClass("hidden");
+
+                break;
+            case btneditpassword:
+                $("#diveditname").addClass("hidden");
+                $("#diveditmobile").addClass("hidden");
+                $("#diveditemail").addClass("hidden");
+
+                $("#diveditpassword").removeClass("hidden");
+                $("#diveditsetting").removeClass("hidden");
+
+                break;
+        }
+
+
+
+    }
+
+</script>
+<span>
+
+
+<div class="modal fade" id="userinfo_modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Sign Up / Log In</h4>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="login-form"><!--login form-->
+                                <h2>Login to your account</h2>
+
+                                <form id="userupdateForm">
+                                    <div class="form-group">
+                                        <h3>Name</h3>
+                                        <label id="custname">Snehal Golhar </label>
+                                        <button id="btneditname" type="submit" class="btn btn-default" onclick="editname(btneditname)">Edit</button>
+                                        </label><br>
+
+                                        <div class="form-group">
+                                            <h3>EmailID</h3>
+
+                                            <label id="custemailid">Snehal.Golhar@gmail.com </label>
+                                            <button id="btneditemail" type="submit" class="btn btn-default" onclick="editname(btneditemail)" >Edit</button>
+
+                                        </div><br>
+
+
+                                        <div class="form-group">
+                                            <h3>Mobile Number</h3>
+                                            <label id="custmobile">+6687789854 </label>
+                                            <button id="btneditmobile" type="submit" class="btn btn-default" onclick="editname(btneditmobile)">Edit</button>
+                                        </div><br>
+
+                                        <div class="form-group">
+                                            <h3>Password</h3>
+                                            <label id="custpassword">************</label>
+                                            <button id="btneditpassword" type="submit"  class="btn btn-default" onclick="editname(btneditpassword)">Edit</button>
+                                        </div>
+                                    </div>
+
+
+
+
+                                </form>
+                            </div>
+                            <!--/login form-->
+                        </div>
+                        <div class="col-sm-1">
+                            <h2 class="or">OR</h2>
+                        </div>
+                        <div id="diveditsetting" class="hidden col-sm-4" >
+                            <div id="diveditname" class="hidden">
+                                <div class="signup-form"><!--sign up form-->
+                                    <div  class="step-one">
+                                        <h2 class="heading" >Edit your name here</h2>
+                                    </div>
+                                    <p>
+                                        If You want to change the name associated with ecommerce account you may do so below .Be sure to click on <b>save changes</b> when you are done.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h4>Earlier Name</h4>
+                                    <label id="lblcustname">Snehal Golhar </label>
+                                    </label>
+                                    <br>
+                                </div>
+
+                                <form action="#">
+                                    <input type="text" placeholder="Name"/>
+                                    <button id="btnsavename" class="btn btn-default">Save Changes</button>
+
+                                </form>
+                            </div>
+
+                            <div id="diveditemail" >
+                                <div class="signup-form"><!--sign up form-->
+                                    <div id="divtitletitle" class="step-one">
+                                        <h2 class="heading" >Edit your email here</h2>
+                                    </div>
+                                    <p>
+                                        If You want to change the EmailId associated with ecommerce account you may do so below .Be sure to click on <b>save changes</b> when you are done.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h4>Earlier Email</h4>
+                                    <label id="lblcustemail">Snehal.Golhar@gmail.com </label>
+                                    </label>
+                                    <br>
+                                </div>
+
+                                <form action="#">
+                                    <input type="email" placeholder="Email"/>
+                                    <button id="btnsaveemail" class="btn btn-default">Save Changes</button>
+
+                                </form>
+                            </div>
+
+
+                            <div id="diveditmobile" >
+                                <div class="signup-form"><!--sign up form-->
+                                    <div  class="step-one">
+                                        <h2 class="heading" >Edit your mobile here</h2>
+                                    </div>
+                                    <p>
+                                        If You want to change the mobile number associated with ecommerce account you may do so below .Be sure to click on <b>save changes</b> when you are done.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h4>Earlier phone number</h4>
+                                    <label id="lblmobile">+7765453267 </label>
+
+                                    <br>
+                                </div>
+
+                                <form action="#">
+                                    <input type="phonenumber" placeholder="Phone Numbaer"/>
+                                    <button id="btnsavemobile" class="btn btn-default">Save Changes</button>
+
+                                </form>
+                            </div>
+
+
+                            <div id="diveditpassword" >
+                                <div class="signup-form"><!--sign up form-->
+                                    <div class="step-one">
+                                        <h2 class="heading" >Edit your Password here</h2>
+                                    </div>
+                                    <p>
+                                        If You want to change the Password associated with ecommerce account you may do so below .Be sure to click on <b>save changes</b> when you are done.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h4>Earlier Password</h4>
+                                    <label id="custemail">*******</label>
+                                    </label>
+                                    <br>
+                                </div>
+
+                                <form action="#">
+                                    <label>Enter your new password</label><br>
+                                    <input type="password" placeholder="New Password"/>
+                                    <br><br>
+                                    <label>Reenter a new password</label><br>
+                                    <input type="password" placeholder="Reenter Passowrd"/>
+                                    <br><br>
+                                    <button id="btnsavepassword" class="btn btn-default">Save Changes</button>
+
+                                </form>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.login & signup container -->
+
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+</span>
+
+
+
+<script type="text/javascript" src="../public/js/controllers/update_userinfo.js"></script>
